@@ -71,9 +71,12 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
           ovog:ovog,
           ner:ner,
           email:email,
-          niitmod:0
+          niitmod:0,
+          userUid:userUidFromCred
         });
-      window.location.href="profile.html";  
+        location.href = "../modBurtgeljuulehHeseg/modBurtgel.html";
+        
+        
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -94,9 +97,11 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
                 await setDoc(doc(db,"baiguulaga",userUidFromCred,),{
                 baiguulaganer:baiguulaganer,
                 email:email,
-                niitmod:0
+                niitmod:0,
+                userUid:userUidFromCred
               });
-            window.location.href="profile.html";  
+              location.href = "../modBurtgeljuulehHeseg/modBurtgel.html";
+               
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -126,7 +131,7 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
         // window.location.href = "./profileHeseg/.profile.html";
         console.log(auth.currentUser.email)
         localStorage.setItem("userid",userUid)
-        window.location.href="profile.html";
+       
       })
       .catch((error) => {
         const errorCode = error.code;
