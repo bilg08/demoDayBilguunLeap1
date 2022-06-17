@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     border: none;
-   
+   box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body{
@@ -85,18 +85,24 @@ a:hover{
 }
 /* home */
 .HomeMainContainer{
+    position: relative;
     width: 100%;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 /* nevtreh heseg */
 .nevtrehHeseg{
-   display: block;
-    /* display: none;  */
-    /* position: fixed; */
-    position: relative;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 100;
     border: 0.0011px solid white;
     width: 380px;
     height: 550px;
@@ -268,17 +274,23 @@ a:hover{
 .bubbles{
 position: relative;
 display: flex;
+width: 100%;
+height: 100%;
+
 }
 .bubbles span{
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-image: url(https://www.pngall.com/wp-content/uploads/5/Single-Plant-Leaf-PNG-File.png);
     margin: 0 4px;
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;
-    border-radius: 50%;
-    box-shadow: 0 0 0 10px #b7ed88,0 0 50px #2da44e,0 0 100px #2da44e;
+   border-radius:50% ;
+    box-shadow: 0 0 0 10px #b7ed88,0 0 10px #2da44e,0 0 10px #2da44e;
     animation: animate 15s linear infinite;
     animation-duration: calc(300s / var(--i));
     color: dodgerblue;
@@ -286,21 +298,27 @@ display: flex;
 .bubbles span:nth-child(even)
 {
     background-color: #b7ed88;
-    box-shadow: 0 0 0 10px #2da44e,0 0 50px #2da44e,0 0 100px #2da44e;
+    box-shadow: 0 0 0 10px #2da44e,0 0 10px #2da44e,0 0 10px #2da44e;
 }
 @keyframes animate {
     0%{
-        transform: translateY(-10vh) scale(0);
+        transform:translateY(-10vh) scale(0);
     }
     100%{
-        transform: translateY(100vh) scale(1);
+        transform: translateY(80vh) scale(1);
     }
 }
 
-/* Ð‘Ò¯Ñ€Ñ‚Ð³Ò¯Ò¯Ð»ÑÑ… Ñ…ÑÑÐ³Ð¸Ð¹Ð½ css */
 .burtguulehHeseg{
 display: none;
-    position: fixed;
+position: absolute;
+top: 0;
+right: 0;
+left: 0;
+bottom: 0;
+margin: auto;
+
+z-index: 100;
     width: 380px;
     height: 550px;
     margin-top: 5%;
@@ -346,7 +364,7 @@ display: none;
     width:100px;
     height: 40px;
     border-bottom: 1px solid #03d010;
-    /* border: none; */
+
     background-color: white;
 }
 #baiguulaga{
@@ -463,15 +481,24 @@ margin-left: 5%;
     cursor: pointer;
 }
 
-@media (max-width:500px) {
+@media (max-width:600px) {
     body{
         display: flex;
         justify-content: center;
         align-items: center; 
    }
     .nevtrehHeseg{
-        width: 300px;
-        height: 400px;
+        width: 400px;
+        height: 500px;
+    }
+    .HomeMainContainer{
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
     }
     .burtguulehHeseg{
         width: 300px;
@@ -487,4 +514,151 @@ margin-left: 5%;
     .burtgelug,.nevtrehUg h3{
         font-size: 20px;
     }
+    .bubbles span{
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-image: url(https://www.pngall.com/wp-content/uploads/5/Single-Plant-Leaf-PNG-File.png);
+        margin: 0 4px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+       border-radius:100% ;
+        box-shadow: 1px 1px 1px 10px #b7ed88,1px 1px 10px #2da44e,1px 1px 10px #2da44e;
+        animation: animate 10s linear infinite;
+        animation-duration: calc(300s / var(--i));
+        color: dodgerblue;
+    }
+    .bubbles span:nth-child(even)
+    {
+        background-color: #b7ed88;
+        box-shadow: 1px 1px 1px 5px #2da44e,1px 1px 5px #b7ed88,1px 1px 5px #2da44e;
+    }
+} 
+@media (max-width:450px) {
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+   }
+    .nevtrehHeseg{
+        width: 350px;
+        height: 500px;
+    }
+    .HomeMainContainer{
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .burtguulehHeseg{
+        width: 300px;
+        height: 450px;
+    }
+    #burtguuleh{
+        width: 180px;
+        height: 35px;
+    }
+    .shineBurtgel p{
+        font-size: 15px;
+    }
+    .burtgelug,.nevtrehUg h3{
+        font-size: 20px;
+    }
+    .bubbles span{
+        position: relative;
+        width: 10px;
+        height: 10px;
+        background-image: url(https://www.pngall.com/wp-content/uploads/5/Single-Plant-Leaf-PNG-File.png);
+        margin: 0 4px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+       border-radius: 50% ;
+        box-shadow: 1px 1px 1px 10px #b7ed88,1px 1px 10px #2da44e,1px 1px 10px #2da44e;
+        animation: animate 10s linear infinite;
+        animation-duration: calc(300s / var(--i));
+        color: dodgerblue;
+    }
+    .bubbles span:nth-child(even)
+    {
+        background-color: #b7ed88;
+        box-shadow: 1px 1px 1px 5px #2da44e,1px 1px 5px #b7ed88,1px 1px 5px #2da44e;
+    }
+} 
+@media (max-width:350px) {
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+   }
+    .nevtrehHeseg{
+        width: 280px;
+        height: 370px;
+    }
+    .HomeMainContainer{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .burtguulehHeseg{
+        width: 280px;
+        height:400px;
+    }
+    #burtguuleh{
+        width: 180px;
+        height: 35px;
+    }
+    .shineBurtgel p{
+        font-size: 15px;
+    }
+    .burtgelug,.nevtrehUg h3{
+        font-size: 20px;
+    }
+    .bubbles span{
+        position: relative;
+        width: 10px;
+        height: 10px;
+        background-image: url(https://www.pngall.com/wp-content/uploads/5/Single-Plant-Leaf-PNG-File.png);
+        margin: 0 4px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+       border-radius:100% ;
+        box-shadow: 1px 1px 1px 10px #b7ed88,1px 1px 10px #2da44e,1px 1px 10px #2da44e;
+        animation: animate 10s linear infinite;
+        animation-duration: calc(300s / var(--i));
+        color: dodgerblue;
+    }
+    .bubbles span:nth-child(even)
+    {
+        background-color: #b7ed88;
+        box-shadow: 1px 1px 1px 5px #2da44e,1px 1px 5px #b7ed88,1px 1px 5px #2da44e;
+    }
+    #email{
+        width: 90%;
+        height: 30px;
+    }
+    #password{
+        width: 90%;
+        height: 30px;
+    }
+    #nevtreh{
+        width: 90%;
+        height:40px;
+    }
+    
 } 
