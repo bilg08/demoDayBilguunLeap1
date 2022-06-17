@@ -1,10 +1,11 @@
-const signUp = document.getElementById("signUp");
+let id=0;
+      const signUp = document.getElementById("signUp");
 const signIn = document.getElementById("signIn");
 const advise = document.getElementById("advise");
 const statistic = document.getElementById("statistic");
 var close = document.getElementById("close-x");
 const tt = document.getElementsByClassName("otherTree")[0];
-
+console.log("hello")
 let inputValue="";
 
     //  sing up garj ireh
@@ -172,8 +173,14 @@ var close=document.getElementsByClassName("test");
    let r;
    let too=document.getElementById("countmod")
    
-   document.getElementById("addBtn").addEventListener("click",function(){
-       console.log("add button daragdlaa.")
+   document.getElementById("addBtn").addEventListener("click",async function(){
+       console.log("add button daragdlaa.",document.getElementById("SongogdsonModGargahHeseg"));
+    //    if(document.getElementById("SongogdsonModGargahHeseg").style.display==="none")
+    // {
+    //     console.log("haha")
+    //  document.getElementById("SongogdsonModGargahHeseg").style.display="block"
+
+    // }
        let li = document.createElement("li");
        if(document.getElementById("modniitorol").value === "бусад"){
         inputValue = document.getElementById("ooa").value;
@@ -188,7 +195,7 @@ var close=document.getElementsByClassName("test");
         let span2 = document.createElement("SPAN")
         let txt = document.createTextNode("\u00D7");
        
-        let tiim =document.createTextNode("	\u221A")
+        let tiim =document.createTextNode(" \u221A")
         let dots=document.createTextNode(inputCount)
         console.log(inputCount)
 
@@ -383,12 +390,95 @@ document.getElementById("registrationButton").addEventListener("click",async()=>
                         console.log(huviHun.data().userUid,userUid)
                     if(huviHun.data().userUid===userUid){
                             alert('huviHunbain');
-                            //  const bairshil=document.getElementById('bairshil').value;
-                            //  const tooShirheg=parseInt(document.getElementById('countmod').innerText);
-                            //  const HezeeTarisan=document.getElementsByClassName('selected-date')[0].innerText;
-                            //  const modniitorol=document.getElementById('modniitorol').value;
-                            //  const modniiiDelgerengui=document.getElementById("description").value;
-                            //  console.log(bairshil,tooShirheg,HezeeTarisan,modniitorol,modniiiDelgerengui)
+                               const tarisanModTorloor=await collection(db,"users",huviHun.data().userUid,"tarisanModTorloor")
+                                    console.log(tarisanModTorloor)
+                                    alert('huviHunbain');
+                                           //////Тухайн байгуулагын нийт мод нэмэгдэнэ/// UID гаар нэмэгдэнэ
+                                           await setDoc(doc(db,"huviHun",userUid),{
+                                                niitmod:increment(tooShirheg)
+                                            },{merge:true});
+                                            ///////Тухайн байгуулагын users collection  байгаа учраас users collection-nd uid гаар нь нэмэгдэнэ
+                                           await setDoc(doc(db,"users",userUid),{
+                                                niitmod:increment(tooShirheg)
+                                            },{merge:true});
+
+                                           await setDoc(doc(db,'aimagduurgeer',bairshil),{
+                                                    niitmod:increment(tooShirheg)
+                                                  },{merge:true});
+                                          await setDoc(doc(db,"aimagduurgeer","MongolUlsiinNiitMod"),{
+                                              niitmod:increment(tooShirheg)
+                                          },{merge:true});
+                                          await setDoc(doc(db,"jilOdroor","niitmod"),{
+                                              niitmod:increment(tooShirheg)
+                                          },{merge:true})
+                                          await setDoc(doc(db,"jilOdroor",HezeeTarisan),{
+                                            niitmod:increment(tooShirheg)
+                                          },{merge:true})
+                                  
+                          let hereglegciinTuhainOdriinTarisanModTorloor=[]
+
+                                //////hereglegciin Modnuud Torlooroo MiniiTarisanModniiTorol gesen collectiond doc bolj orno Давталтаар авж байгаа модны төрлөөр doc үүсгэнэ
+                                //////Бас Монгол болон аймгийн моднууд төрөл төрлөөрөө нэмэгдэнэ
+                                for(let i=0;i<listModniiNer.length;i++)
+                                {
+                                  
+                                        await setDoc(doc(db,"users",huviHun.data().userUid,"modniiTorloor",listModniiNer[i].innerText,),{
+                                          niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});  
+
+                                          await setDoc(doc(db,"huviHun",huviHun.data().userUid,"modniiTorloor",listModniiNer[i].innerText,),{
+                                          niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});
+                                          
+                                          await setDoc(doc(db,"aimagduurgeer","MongolUlsiinNiitMod","modniiTorloor",listModniiNer[i].innerText,),{
+                                              niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                              },{merge:true});
+                                              
+                                          await setDoc(doc(db,"aimagduurgeer",bairshil,"modniiTorloor",listModniiNer[i].innerText,),{
+                                          niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});
+                                          
+                                          
+
+                                          await setDoc(doc(db,"jilOdroor",HezeeTarisan,"modniiTorloor",listModniiNer[i].innerText,),{
+                                              niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                              },{merge:true}); 
+                                          await setDoc(doc(db,"modniiTorloor",listModniiNer[i].innerText),{
+                                              niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});
+                                          await hereglegciinTuhainOdriinTarisanModTorloor.push(listModniiNer[i].innerText);
+
+                                  
+                                }
+
+                                            await addDoc(collection(db,"huviHun",userUid,"miniitarisanmodnuud",),{
+                                                    HezeeTarisan:HezeeTarisan,
+                                                    niithedenShirheg:tooShirheg,
+                                                    haana:bairshil,
+                                                    modniitorol:hereglegciinTuhainOdriinTarisanModTorloor
+                                            });
+
+
+
+                                            //medee collection uusgene medee oruulna
+                                            const medee={
+                                                    HenTarisan:huviHun.data().ner,
+                                                    HezeeTarisan:HezeeTarisan,
+                                                    niithedenShirheg:tooShirheg,
+                                                    haana:bairshil,
+                                                    modniitorol:hereglegciinTuhainOdriinTarisanModTorloor
+                                            } 
+                                            await addDoc(collection(db,"medee"),medee);
+                                            await push(ref(realDb,"medee",),{
+                                                HenTarisan:huviHun.data().ner,
+                                                HezeeTarisan:HezeeTarisan,
+                                                niithedenShirheg:tooShirheg,
+                                                haana:bairshil,
+                                                modniitorol:hereglegciinTuhainOdriinTarisanModTorloor
+                                            })
+                                            location.reload();
+
+
                     }
                     });
 
@@ -399,128 +489,97 @@ document.getElementById("registrationButton").addEventListener("click",async()=>
                         // console.log("baiguulaga",baiguulaga.data().userUid,userUid);
                         
                         if(baiguulaga.data().userUid===userUid){
-                             const tarisanModTorloor=await collection(db,"users",baiguulaga.data().userUid,"tarisanModTorloor")
-                            console.log(tarisanModTorloor)
-                            alert('baiguulagabain');
-                           //////Тухайн байгуулагын нийт мод нэмэгдэнэ/// UID гаар нэмэгдэнэ
-                           await setDoc(doc(db,"baiguulaga",userUid),{
-                                niitmod:increment(tooShirheg)
-                            },{merge:true});
-                            ///////Тухайн байгуулагын users collection  байгаа учраас users collection-nd uid гаар нь нэмэгдэнэ
-                           await setDoc(doc(db,"users",userUid),{
-                                niitmod:increment(tooShirheg)
-                            },{merge:true});
+                                    const tarisanModTorloor=await collection(db,"users",baiguulaga.data().userUid,"tarisanModTorloor")
+                                    console.log(tarisanModTorloor)
+                                    alert('baiguulagabain');
+                                           //////Тухайн байгуулагын нийт мод нэмэгдэнэ/// UID гаар нэмэгдэнэ
+                                           await setDoc(doc(db,"baiguulaga",userUid),{
+                                                niitmod:increment(tooShirheg)
+                                            },{merge:true});
+                                            ///////Тухайн байгуулагын users collection  байгаа учраас users collection-nd uid гаар нь нэмэгдэнэ
+                                           await setDoc(doc(db,"users",userUid),{
+                                                niitmod:increment(tooShirheg)
+                                            },{merge:true});
 
-                           await setDoc(doc(db,'aimagduurgeer',bairshil),{
-                                    niitmod:increment(tooShirheg)
-                                  },{merge:true});
-                          await setDoc(doc(db,"aimagduurgeer","MongolNiitModTorloor"),{
-                              niitmod:increment(tooShirheg)
-                          },{merge:true});
-                          await setDoc(doc(db,"jilOdroor","niitmod"),{
-                              niitmod:increment(tooShirheg)
-                          })
+                                           await setDoc(doc(db,'aimagduurgeer',bairshil),{
+                                                    niitmod:increment(tooShirheg)
+                                                  },{merge:true});
+                                          await setDoc(doc(db,"aimagduurgeer","MongolUlsiinNiitMod"),{
+                                              niitmod:increment(tooShirheg)
+                                          },{merge:true});
+                                          await setDoc(doc(db,"jilOdroor","niitmod"),{
+                                              niitmod:increment(tooShirheg)
+                                          },{merge:true})
+                                          await setDoc(doc(db,"jilOdroor",HezeeTarisan),{
+                                            niitmod:increment(tooShirheg)
+                                          },{merge:true})
+                                  
+                          let hereglegciinTuhainOdriinTarisanModTorloor=[]
 
                                 //////hereglegciin Modnuud Torlooroo MiniiTarisanModniiTorol gesen collectiond doc bolj orno Давталтаар авж байгаа модны төрлөөр doc үүсгэнэ
                                 //////Бас Монгол болон аймгийн моднууд төрөл төрлөөрөө нэмэгдэнэ
                                 for(let i=0;i<listModniiNer.length;i++)
                                 {
                                   
-                                    await setDoc(doc(db,"baiguulaga",baiguulaga.data().userUid,"modniiTorloor",listModniiNer[i].innerText,),{
-                                    niitmod:increment(parseInt(torolModniiToo[i].innerText))
-                                    },{merge:true});
-                                    
-                                    await setDoc(doc(db,"aimagduurgeer","MongolNiitModTorloor","modniiTorloor",listModniiNer[i].innerText,),{
-                                        niitmod:increment(parseInt(torolModniiToo[i].innerText))
-                                        },{merge:true});
-                                        
-                                    await setDoc(doc(db,"aimagduurgeer",bairshil,"modniiTorloor",listModniiNer[i].innerText,),{
-                                    niitmod:increment(parseInt(torolModniiToo[i].innerText))
-                                    },{merge:true});
-                                    
-                                    await setDoc(doc(db,"users",baiguulaga.data().userUid,"modniiTorloor",listModniiNer[i].innerText,),{
-                                    niitmod:increment(parseInt(torolModniiToo[i].innerText))
-                                    },{merge:true});  
+                                        await setDoc(doc(db,"users",baiguulaga.data().userUid,"modniiTorloor",listModniiNer[i].innerText,),{
+                                          niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});  
 
-                                    await setDoc(doc(db,"jilOdroor",HezeeTarisan,"modniiTorloor",listModniiNer[i].innerText,),{
-                                        niitmod:increment(parseInt(torolModniiToo[i].innerText))
-                                        },{merge:true}); 
-                                    await setDoc(doc(db,"modniiTorloor",listModniiNer[i].innerText),{
-                                        niitmod:increment(parseInt(torolModniiToo[i].innerText))
-                                    },{merge:true});
-                                    
+                                          await setDoc(doc(db,"baiguulaga",baiguulaga.data().userUid,"modniiTorloor",listModniiNer[i].innerText,),{
+                                          niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});
+                                          
+                                          await setDoc(doc(db,"aimagduurgeer","MongolUlsiinNiitMod","modniiTorloor",listModniiNer[i].innerText,),{
+                                              niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                              },{merge:true});
+                                              
+                                          await setDoc(doc(db,"aimagduurgeer",bairshil,"modniiTorloor",listModniiNer[i].innerText,),{
+                                          niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});
+                                          
+                                          
+
+                                          await setDoc(doc(db,"jilOdroor",HezeeTarisan,"modniiTorloor",listModniiNer[i].innerText,),{
+                                              niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                              },{merge:true}); 
+                                          await setDoc(doc(db,"modniiTorloor",listModniiNer[i].innerText),{
+                                              niitmod:increment(parseInt(torolModniiToo[i].innerText))
+                                          },{merge:true});
+                                          await hereglegciinTuhainOdriinTarisanModTorloor.push(listModniiNer[i].innerText);
+
                                   
-                            }
-                           
-                            
-                           
-                                  //    setDoc(doc(db,'aimagDuurgeer',bairshil),{
-            //     niitmod:increment(tooShirheg)
-            //   },{merge:true});
-            //   //////hereglegciin Modnuud Torlooroo MiniiTarisanModniiTorol gesen collectiond doc bolj orno
-            //    setDoc(doc(db,"aimagDuurgeer",bairshil,"modniiToroloor",modniMedeelel),{
-            //     niitmod:increment(tooShirheg)
-            //   },{merge:true});
-            // // modiiTorloor too nemegden
-            //  setDoc(doc(db,"modniiTorloor",modniitorol),{
-            //   niitmod:increment(tooShirheg)
-            // },{merge:true});
-            //   ///////////////////////////////////////////////////////////////////////////////////////
-            // //jileer hadgalah
-            //  setDoc(doc(db,"jilodroor",HezeeTarisan),{
-            //   niitmod:increment(tooShirheg)
-            // },{merge:true});
-            // //tuhain odor ymar torliin modnuud tarigdsan hadgalna
-            //  setDoc(doc(db,"jilodroor",HezeeTarisan,"modniiToroloor",modniMedeelel),{
-            //   niitmod:increment(tooShirheg)
-            // },{merge:true});
-          //    addDoc(collection(db,"medee"),{
-          //     HezeeTarisan:HezeeTarisan,
-          //     Tarisanhayg:bairshil,
-          //     tooShirheg:tooShirheg,
-          //     modniitorol:modniitorol,
-          //     modniiZurag:modniiZurag,
-          //     modniiiDelgerengui:modniiiDelgerengui
-          //     // medeelel:modniiiDelgerengui,
-          //   });
-          //   //modniitoo bugd nemegdene
-          //    setDoc(doc(db,"niitmod","niitModToo"),{
-          //     niitmod:increment(tooShirheg)
-          //   },{merge:true})
-          //    push(ref(realDb,"medee",),{
-          //     HezeeTarisan:HezeeTarisan,
-          //     Tarisanhayg:bairshil,
-          //     tooShirheg:tooShirheg,
-          //     modniitorol:modniitorol,
-          //     modniiZurag:modniiZurag,
-          //     modniiiDelgerengui:modniiiDelgerengui
-          //   });
+                                }
 
-
-
-                            location.reload();
-                                // setDoc(doc(db,"aimagDuurgeer",bairshil,"modniiToroloor",modniMedeelel),{
-                                //     niitmod:increment(tooShirheg)
-                                // },{merge:true});
-                        //  const bairshil=document.getElementById('bairshil').value;
-                        //  const tooShirheg=parseInt(document.getElementById('countmod').innerText);
-                        //  const HezeeTarisan=document.getElementsByClassName('selected-date')[0].innerText;
-                        //  const modniitorol=document.getElementById('modniitorol').value;
-                        //  const modniiiDelgerengui=document.getElementById("description").value;
-                        //  console.log(bairshil,tooShirheg,HezeeTarisan,modniitorol,modniiiDelgerengui)
+                                            await addDoc(collection(db,"baiguulaga",userUid,"miniitarisanmodnuud",),{
+                                                    HezeeTarisan:HezeeTarisan,
+                                                    niithedenShirheg:tooShirheg,
+                                                    haana:bairshil,
+                                                    modniitorol:hereglegciinTuhainOdriinTarisanModTorloor
+                                            });
+                                            const medee={
+                                                    HenTarisan:baiguulaga.data().ner,
+                                                    HezeeTarisan:HezeeTarisan,
+                                                    niithedenShirheg:tooShirheg,
+                                                    haana:bairshil,
+                                                    modniitorol:hereglegciinTuhainOdriinTarisanModTorloor
+                                            } 
+                                            await addDoc(collection(db,"medee"),medee);
+                                            await push(ref(db,"medee"),{
+                                                HenTarisan:baiguulaga.data().ner,
+                                                HezeeTarisan:HezeeTarisan,
+                                                niithedenShirheg:tooShirheg,
+                                                haana:bairshil,
+                                                modniitorol:hereglegciinTuhainOdriinTarisanModTorloor
+                                            })
+                                            
+                                            location.reload();
                     }
                 })
-                
-                
-                    
+                ///////baiguulagaeseh        
                 }
+                ////if(user)
                 }
 });
-            //  for(let i=0;i<listModHaruulah.length;i++)
-            // {
-            //     console.log(listModniiNer[i].innerText,torolModniiToo[i].innerText);
-            //     tarisanModnuud.push()
-            // }
-            // location.reload();     
-})
+////ounauth
 
+})
