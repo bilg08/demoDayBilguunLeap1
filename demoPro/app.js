@@ -169,3 +169,11 @@ let TuruuAnimatiom=new TimelineLite();
 
 
 const ctx = document.getElementById('myChart').getContext('2d');
+document.getElementById("garah").addEventListener("click",()=>{
+    const signout = async() =>{
+        signOut(auth).then(async() => {
+          await console.log("signed out")
+         }).catch((error) => {
+         });
+ }
+})
