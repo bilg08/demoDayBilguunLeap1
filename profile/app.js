@@ -1,129 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tree</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-</head>
-<body>
-<!-- header heseg ++++++++-->
-  <div class="header-heseg">
-    <div class="header">
-      <div class="logo">
-        <img src="https://raw.githubusercontent.com/mairadn/treedemo/main/logo.png" alt="logo">
-        <div>
-          <p style="color:#04A74B;">ТЭРБУМ МОД </p>
-          <p style="color:#314F9B">Үндэсний Хөдөлгөөн</p>
-        </div>
-      </div>
-    </div>
-    <div class="bar">
-      <div class="torol">
-        <div class="garchig">
-          <a href="">Нүүр хуудас</a>
-        </div>
-        <div class="garchig">
-          <a href="">Статистик</a>
-        </div>
-        <div id="nevtreh">
-          <p id="">Нэвтрэх</p>
-        </div>
-        <div class="garchig">
-          <a href="">Профайл</a>
-        </div>
-        <div class="garchig">
-          <a href="">Тарисан модны бүртгэл</a>
-        </div>
-        <div class="garchig">
-          <a href="">Мэдээ</a>
-        </div>
-        <div class="garchig">
-          <a href="">Зөвөлгөө</a>
-        </div>
-        <div id="garah">
-          <p>Гарах</p>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- header heseg ++++++++-->
-
-<!-- profile heseg -->
-<div class="contentProfile">
-
-  <div class="talarhaliinPart">
-    <img id="thanksgif" src="https://i.pinimg.com/originals/96/14/fa/9614fa802daad49000f79cc1fec29689.gif" alt="">
-    <div class="talarhal">
-        <h3> Талархал</h3>
-        <p>Дэлхий нийтийн өмнө тулгараад буй уур амьсгалын өөрчлөлт дэлхийн дулаарал, цөлжилттэй тэмцэх чиглэлд гаргасан томоохон санал, санаачилга болох “Тэрбум мод” үндэсний хөдөлгөөнд нэгдэж мод тарьж ургуулж байгаа таньд талархалаа.</p>
-    </div>
-  </div>
-
-  <h1 class="profilemember">ГИШҮҮНИЙ ПРОФАЙЛ</h1>
-
-    <div class="profileMain">
-
-      <div class="modniizurag">
-        <img id="tomMod" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/87fb72ad-f111-458e-8773-c00d6dc51d92/dcamutq-b0ac99f9-9f45-45a1-a1e0-4b4576561d44.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg3ZmI3MmFkLWYxMTEtNDU4ZS04NzczLWMwMGQ2ZGM1MWQ5MlwvZGNhbXV0cS1iMGFjOTlmOS05ZjQ1LTQ1YTEtYTFlMC00YjQ1NzY1NjFkNDQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.TmYfK-XWQtl56RYnfVMloNfzm25QlE9rP2RzXE04uZE" alt="">
-        <img id="svgMod" src="https://freesvg.org/img/tree_21102016.png" alt="">
-        <img id="svgModArd" src="https://freesvg.org/img/tree-17.png" alt="">
-        <img id="goyMod" src="https://freesvg.org/img/ete.png" alt="">
-        <img id="svgGrass" src="https://freesvg.org/img/1457805025.png" alt="">
-        <img id="gifGrass" src="https://www.victoriamemorial-cal.org/uploads/E-Catalogue-List/butter.gif" alt="">
-      </div>
-
-      <div class="memberPart">
-        <div class=profileZurag>
-          <div class="profileZurag-anima"></div>
-          <div class="memberZurag">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGPJxlKBTFWwAySAMT0yh0A4r4VXv2qILNmQ&usqp=CAU">
-          </div>
-        </div>
-
-        <div>
-          <span id="memberName">Хэрэглэгчийн нэр</span>
-          <span id="emailAdress">Email: <p id="emailNer">haha</p> </span>
-          <p id="treeNumber">Тарисан модны тоо: <span id="tooshirhegPro">0</span> </p>
-
-          <div style="display:flex;position: relative;">
-
-            <div class="graphic">
-              <canvas id="myChart" width="" height=""></canvas>
-            </div>
-
-            <div class="miniiTarisanModniiContainer">
-           
-            </div> 
-
-          </div>
-
-        </div>
-
-      </div>
-      
-    </div>
-</div>
-    <!-- profile heseg -->
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineLite.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/CSSPlugin.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/BezierPlugin.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
 
 
 import {
@@ -193,8 +68,8 @@ let backgroundColor=[];
         if(user)
         {
         console.log("hello1");
-        document.getElementById("nevtreh").style.display='none';
-        document.getElementById("garah").style.display="block"
+        // document.getElementById("nevtreh").style.display='none';
+        // document.getElementById("garah").style.display="block"
         const userUid=user.uid;
         console.log(userUid,auth.currentUser.uid)
         if(auth.currentUser.uid===userUid);
@@ -263,12 +138,12 @@ let backgroundColor=[];
                                 modnuud=
                                          `
                                           <div class="modniiTuhai">
-              <p id="onsarPro" >${miniiMod.data().HezeeTarisan}</p>
-              <p class="YmarMod">${miniiMod.data().modniitorol}</p>
-              <p class="HedenShirheg">${miniiMod.data().niithedenShirheg} ширхэг
-              </p>
-              <p class="HaanaTariv"> ${miniiMod.data().haana}</p>
-            </div>
+                                            <p id="onsarPro" >${miniiMod.data().HezeeTarisan}</p>
+                                            <p class="YmarMod">${miniiMod.data().modniitorol}</p>
+                                            <p class="HedenShirheg">${miniiMod.data().niithedenShirheg} ширхэг
+                                            </p>
+                                            <p class="HaanaTariv"> ${miniiMod.data().haana}</p>
+                                         </div>
                                          `;
                                          await console.log(modnuud)
                               miniiTarisanModContainer.innerHTML+=modnuud;
@@ -363,18 +238,18 @@ let backgroundColor=[];
 
 
 
-document.getElementById("garah").addEventListener("click",()=>{
-  // swal("haha")
+// document.getElementById("garah").addEventListener("click",()=>{
+//   // swal("haha")
   
-    signOut(auth).then(async()=>{
-      await swal("Амжилттай Бүртгэлээс гарлаа");
-      location.reload();
-    })
-    .catch((err)=>{
-      console.log("гарлаа");
-    })
+//     signOut(auth).then(async()=>{
+//       await swal("Амжилттай Бүртгэлээс гарлаа");
+//       location.reload();
+//     })
+//     .catch((err)=>{
+//       console.log("гарлаа");
+//     })
   
-})
+// })
 
 
 
@@ -393,7 +268,3 @@ let TuruuAnimatiom=new TimelineLite();
 
 
 const ctx = document.getElementById('myChart').getContext('2d');
-    
-  </script>
-</body>
-</html>

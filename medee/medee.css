@@ -1,0 +1,152 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    outline: none;
+    /* border: none; */
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+    padding: 0%;
+    margin: 0%;
+}
+
+body {
+    /* background: linear-gradient(45deg, forestgreen, lightgreen); */
+    background: #EBF5FB;
+}
+.img {
+    object-fit: cover;
+    background-image: url(./mapZ.jpeg);
+    /* background-size: cover; */
+  }
+  .bar {
+    z-index: 100000;
+    /* position: fixed; */
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(#13af49, #228c22);
+    font-size: 15px;
+    color: #fdfefd;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-heseg {
+    z-index: 10000;
+    position: fixed;
+    height: 10vh;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .header {
+    display: flex;
+    gap: 30px;
+    background-color: #e8e9eb;
+    align-items: center;
+    height: 66%;
+  }
+  .header p {
+    font-size: 20px;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+  }
+  .logo {
+    margin-left: 5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .logo img {
+    width: 130px;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .torol {
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .torol a {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* height: 40px; */
+    color: #fdfefd;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #314f9b;
+  }
+  .garchig:hover {
+    background-color: #a3ebb1;
+  }
+  .garchig {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .torol {
+    height: 100%;
+  }
+  
+#information-medee-heseg {
+    
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0% 20%;
+    padding-top: 2em;
+}
+
+.information-in-heseg {
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, auto));
+    grid-gap: 1.5em;
+    position: relative;
+    width: 100%;
+}
+
+.information-trash-heseg {
+    height: auto;
+}
+
+.dude {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 7px #CCD1D1;
+    border-radius: 7px;
+    background: #F2F3F4;
+    padding: 1rem;
+}
+
+.dude span i {
+  color: #13af49;
+  text-shadow: 0 0 0.3px #000;
+}
+
+.img-infornation {
+    width: 100%;
+    height: auto;
+}
+
+.imformation-trash-heseg h1 {
+    font-size: 2.4em;
+}
+
+.imformation-trash-heseg h2 {
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.dude span {
+    margin-top: 2rem;
+}

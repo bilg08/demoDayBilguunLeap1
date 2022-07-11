@@ -2,7 +2,10 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    updateEmail,
+    updatePassword,
+    sendEmailVerification
   } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
   import {
@@ -61,7 +64,7 @@ import {
 //Хувь хүнээр хаяг үүсгэнэ
 if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
   
-  alert("baiguulagabish")
+  
         createUserWithEmailAndPassword(auth,email,password)
       .then(async(userCredential)=>{
         console.log(userCredential)
@@ -74,7 +77,9 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
           niitmod:0,
           userUid:userUidFromCred
         });
-        location.href = "../modBurtgeljuulehHeseg/modBurtgel.html";
+          await swal("Амжилттай нэвтэрлээ");
+          window.location.href('./profile/index.html');
+        // location.href = "modBurtgel.html";
         
         
       })
@@ -92,15 +97,17 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
             .then(async(userCredential)=>{
               console.log(userCredential)
               const userUidFromCred=userCredential.user.uid;
-              console.log(userUidFromCred);
-              alert("baiguulaga")
+              
                 await setDoc(doc(db,"baiguulaga",userUidFromCred,),{
                 baiguulaganer:baiguulaganer,
                 email:email,
                 niitmod:0,
                 userUid:userUidFromCred
               });
-              location.href = "../modBurtgeljuulehHeseg/modBurtgel.html";
+                await swal("Амжилттай нэвтэрлээ");
+                window.location.href('./profile/index.html');
+          
+              // location.href = "modBurtgel.html";
                
             })
             .catch((error) => {
@@ -129,8 +136,11 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
         let userUid = userCredential.user.uid;
         console.log("amjilttai newterlee uid= ", userUid);
         // window.location.href = "./profileHeseg/.profile.html";
-        console.log(auth.currentUser.email)
+        console.log(auth.currentUser.email);
+        swal("Амжилттай нэвтэрлээ");
         localStorage.setItem("userid",userUid)
+        window.location.href('./profile/index.html');
+      
        
       })
       .catch((error) => {
@@ -141,8 +151,19 @@ if((document.getElementById("baiguulagiinNerHeseg").style.display==="none")){
   }
   // burtguuleh болон nevtreh товч дарж Функц ажиллуулна
   document.getElementById('burtguuleh').addEventListener('click',createUser);
-  document.getElementById("nevtreh").addEventListener("click",login);
-  
-  
-
-  
+  document.getElementById("nevtreh").addEventListener("click",async()=>{
+const emailInput=document.getElementById("email").value;
+    console.log(document.getElementById("email").value.length);
+    let temp=emailInput.split("@");
+    let ext=temp.slice(temp.length-1,temp.length);
+    console.log(ext[0]);
+    if(ext[0]==="yahoo.com" || ext[0]==="gmail.com")
+    {
+     await login();
+    
+     
+    }else{
+      swal("Нэвтрэх хаяг буруу байна")
+    }
+    
+  });
